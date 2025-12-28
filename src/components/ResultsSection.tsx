@@ -1,17 +1,18 @@
 import { FitnessResult, UserProfile } from '@/types/fitness';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Flame, Apple, Dumbbell, Pill, Clock, RotateCcw } from 'lucide-react';
+import { ArrowLeft, Flame, Apple, Dumbbell, Pill, Clock, RotateCcw, TrendingUp } from 'lucide-react';
 import { useState } from 'react';
 
 interface ResultsSectionProps {
   result: FitnessResult;
   profile: UserProfile;
   onReset: () => void;
+  onGoToProgress: () => void;
 }
 
 type Tab = 'overview' | 'diet' | 'workout' | 'supplements';
 
-export function ResultsSection({ result, profile, onReset }: ResultsSectionProps) {
+export function ResultsSection({ result, profile, onReset, onGoToProgress }: ResultsSectionProps) {
   const [activeTab, setActiveTab] = useState<Tab>('overview');
 
   const tabs = [
@@ -33,10 +34,16 @@ export function ResultsSection({ result, profile, onReset }: ResultsSectionProps
             <ArrowLeft className="w-4 h-4" />
             Start Over
           </button>
-          <Button variant="outline" size="sm" onClick={onReset}>
-            <RotateCcw className="w-4 h-4 mr-2" />
-            New Plan
-          </Button>
+          <div className="flex gap-2">
+            <Button variant="hero" size="sm" onClick={onGoToProgress}>
+              <TrendingUp className="w-4 h-4 mr-2" />
+              Track Progress
+            </Button>
+            <Button variant="outline" size="sm" onClick={onReset}>
+              <RotateCcw className="w-4 h-4 mr-2" />
+              New Plan
+            </Button>
+          </div>
         </div>
 
         {/* Title */}

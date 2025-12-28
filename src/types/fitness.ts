@@ -53,3 +53,20 @@ export interface FitnessResult {
   workouts: Workout[];
   supplements: Supplement[];
 }
+
+export interface ProgressEntry {
+  id: string;
+  date: string;
+  weight: number;
+  chest?: number;
+  waist?: number;
+  hips?: number;
+  arms?: number;
+  thighs?: number;
+  workoutCompleted: boolean;
+  notes?: string;
+}
+
+export interface ProgressData {
+  entries: ProgressEntry[];
+}
